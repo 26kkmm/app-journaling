@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/index.css" />
+    <script src="/index.js" defer></script>
     <title>Journal</title>
   </head>
   <body>
@@ -14,11 +15,13 @@
           <div class="date">12 March 2024</div>
         </div>
         <div class="calendar">Calendar</div>
-        <button class="btn">Previous Day</button>
-        <button class="btn">Next Day</button>
+        <btn-group>
+          <button class="btn">Previous Day</button>
+          <button class="btn">Next Day</button>
+        </btn-group>
       </div>
       <div class="writing-zone">
-        <textarea name="text" id="text" cols="30" rows="10"></textarea>
+        <textarea name="text" id="text" oninput="resizeTextarea()"></textarea>
       </div>
     </div>
   </body>
