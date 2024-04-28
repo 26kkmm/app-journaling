@@ -3,4 +3,5 @@
 
 
 - textarea "styling"
+- datetime show current
 - calendar input - "api" or "from scratch"

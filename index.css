@@ -20,7 +20,7 @@ body {
 }
 
 .lookup {
-  width: 20%;
+  width: 30%;
   text-align: center;
   padding: 2rem;
   display: flex;
@@ -60,4 +60,29 @@ body {
   resize: none;
   font-size: 1.5rem;
   line-height: 130%;
+}
+
+.calendar {
+  width: 100%;
+  
+  font-size: 1.1rem;
+}
+
+.cal-heading {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cal-year, .cal-month {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.days {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
 }
