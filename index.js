@@ -4,6 +4,9 @@ const calYear = document.querySelector(".cal-year");
 const calMonth = document.querySelector(".cal-month");
 const calDatesList = document.querySelector(".cal-dates");
 
+const prevDay = document.querySelector("#previous-day");
+const nextDay = document.querySelector("#next-day");
+
 let date = new Date();
 let year = date.getFullYear();
 let month = date.getMonth();
@@ -43,7 +46,7 @@ calMonth.textContent = months[month];
 let currentDate = date.getDate();
 let lastdate = new Date(year, month + 1, 0).getDate();
 let dayOne = new Date(year, month, 1).getDay();
-let dayEnd = new Date(year, month, lastdate).getDay()
+let dayEnd = new Date(year, month, lastdate).getDay();
 let monthlastdate = new Date(year, month, 0).getDate();
 
 let generatedDays = "";
@@ -62,3 +65,28 @@ for (let i = 1; i < 8 - dayEnd; i++) {
 }
 
 calDatesList.innerHTML = generatedDays;
+
+// calendar buttons
+const showPreviousDay = () => {
+  // change date in calendar
+  const todayDate = document.querySelector(".isToday");
+  todayDate.classList.remove("isToday");
+  todayDate.previousElementSibling.classList.add("isToday");
+  // show notes on that day
+};
+
+const showNextDay = () => {
+  const todayDate = document.querySelector(".isToday");
+  todayDate.classList.remove("isToday");
+  todayDate.nextElementSibling.classList.add("isToday");
+};
+prevDay.addEventListener("click", showPreviousDay);
+nextDay.addEventListener("click", showNextDay);
+
+// cal year and month choosing
+const showAllYears = () => {
+  calYear.textContent = '2002'
+}
+
+calYear.addEventListener('click', showAllYears)
+

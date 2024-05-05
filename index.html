@@ -11,6 +11,7 @@
   <body>
     <div class="app">
       <div class="lookup">
+        
         <div class="today">
           <div class="day"></div>
           <div class="date"></div>
@@ -35,13 +36,14 @@
           </div>
         </div>
         <btn-group>
-          <button class="btn">Previous Day</button>
-          <button class="btn">Next Day</button>
+          <button id="previous-day" class="btn">Previous Day</button>
+          <button id="next-day" class="btn">Next Day</button>
         </btn-group>
       </div>
       <div class="writing-zone">
         <textarea name="text" id="text" oninput="resizeTextarea()"></textarea>
       </div>
     </div>
+    
   </body>
 </html>

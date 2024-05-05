@@ -36,6 +36,7 @@ body {
 }
 
 .btn {
+  width: 7rem;
   padding: 0.3rem;
 }
 
@@ -87,6 +88,7 @@ body {
 }
 
 .weekdays {
+  font-size: 0.9rem;
   list-style: none;
   display: flex;
   justify-content: space-around;
@@ -106,3 +108,4 @@ body {
 .isToday {
   font-weight: bolder;
 }
+

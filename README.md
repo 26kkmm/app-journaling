@@ -3,6 +3,7 @@
 
 
 - implement calendar functions
+    - prev & next btns
     - year clickable and chooseable
     - month clickable and chooseable
     - dates clickable 
