@@ -37,7 +37,7 @@ const days = [
 
 // today dates heading
 dayEl.textContent = days[date.getDate()];
-dateEl.textContent = `${year} ${months[month]} ${date.getDate()}`;
+dateEl.innerHTML = `<p> ${year} ${months[month]} <span class="todayDate">${date.getDate()} </span> </p>`;
 
 // calendar
 calYear.textContent = year;
@@ -67,6 +67,17 @@ for (let i = 1; i < 8 - dayEnd; i++) {
 calDatesList.innerHTML = generatedDays;
 
 // calendar buttons
+const showToday = () => {
+    const todayDate = document.querySelector(".isToday");
+    const today = date.getDate()
+    todayDate.classList.remove("isToday");
+    for (const date of calDatesList.childNodes) {
+      if (date.textContent == today) {
+        date.classList.add('isToday')
+      }
+    }
+}
+
 const showPreviousDay = () => {
   // change date in calendar
   const todayDate = document.querySelector(".isToday");
@@ -82,6 +93,8 @@ const showNextDay = () => {
 };
 prevDay.addEventListener("click", showPreviousDay);
 nextDay.addEventListener("click", showNextDay);
+const todayDateEl = document.querySelector(".todayDate");
+todayDateEl.addEventListener('click', showToday)
 
 // cal year and month choosing
 const showAllYears = () => {
