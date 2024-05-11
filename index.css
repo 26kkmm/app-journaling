@@ -36,8 +36,8 @@ body {
 }
 
 .todayDate {
-  border-radius: 50%;
-  padding: 1rem;
+  border-radius: 2%;
+  padding: 0.7rem;
   background-color: antiquewhite;
 }
 
@@ -49,10 +49,81 @@ body {
 .btn {
   width: 7rem;
   padding: 0.3rem;
+  background: none;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 2%;
 }
 
 .btn:hover {
   cursor: pointer;
+  background-color: antiquewhite;
+}
+
+
+.calendar {
+  width: 100%;
+  font-size: 1.1rem;
+  padding: 1rem 2rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.cal-heading {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.cal-year,
+.cal-month {
+  padding: 0.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cal-year:hover,
+.cal-month:hover {
+  cursor: pointer;
+  border-radius: 4%;
+  background-color: antiquewhite;
+}
+
+.cal-days {
+  display: flex;
+  flex-direction: column; 
+}
+
+.weekdays {
+  font-size: 1rem;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+}
+
+
+.cal-dates {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  column-gap: 0.5rem;
+  list-style: none;
+}
+
+.cal-dates li:hover {
+  cursor: pointer;
+  background-color: antiquewhite;
+  border-radius: 2%;
+}
+
+.inactive {
+  color: rgba(179, 179, 179, 0.8);
+}
+
+.isToday {
+  font-weight: bolder;
 }
 
 .writing-zone {
@@ -73,50 +144,3 @@ body {
   font-size: 1.5rem;
   line-height: 130%;
 }
-
-.calendar {
-  width: 100%;
-  
-  font-size: 1.1rem;
-}
-
-.cal-heading {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.cal-year, .cal-month {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.cal-days {
-  display: flex;
-  flex-direction: column;
-}
-
-.weekdays {
-  font-size: 0.9rem;
-  list-style: none;
-  display: flex;
-  justify-content: space-around;
-}
-
-.cal-dates {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  column-gap: 0.5rem;
-  list-style: none;
-}
-
-.inactive {
-  color: rgba(179, 179, 179, 0.8);
-}
-
-.isToday {
-  font-weight: bolder;
-}
-

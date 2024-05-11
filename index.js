@@ -7,6 +7,8 @@ const calDatesList = document.querySelector(".cal-dates");
 const prevDay = document.querySelector("#previous-day");
 const nextDay = document.querySelector("#next-day");
 
+const textArea = document.querySelector("textarea");
+
 let date = new Date();
 let year = date.getFullYear();
 let month = date.getMonth();
@@ -37,7 +39,9 @@ const days = [
 
 // today dates heading
 dayEl.textContent = days[date.getDate()];
-dateEl.innerHTML = `<p> ${year} ${months[month]} <span class="todayDate">${date.getDate()} </span> </p>`;
+dateEl.innerHTML = `<p> ${year} ${
+  months[month]
+} <span class="todayDate">${date.getDate()} </span> </p>`;
 
 // calendar
 calYear.textContent = year;
@@ -68,15 +72,15 @@ calDatesList.innerHTML = generatedDays;
 
 // calendar buttons
 const showToday = () => {
-    const todayDate = document.querySelector(".isToday");
-    const today = date.getDate()
-    todayDate.classList.remove("isToday");
-    for (const date of calDatesList.childNodes) {
-      if (date.textContent == today) {
-        date.classList.add('isToday')
-      }
+  const todayDate = document.querySelector(".isToday");
+  const today = date.getDate();
+  todayDate.classList.remove("isToday");
+  for (const date of calDatesList.childNodes) {
+    if (date.textContent == today) {
+      date.classList.add("isToday");
     }
-}
+  }
+};
 
 const showPreviousDay = () => {
   // change date in calendar
@@ -94,12 +98,22 @@ const showNextDay = () => {
 prevDay.addEventListener("click", showPreviousDay);
 nextDay.addEventListener("click", showNextDay);
 const todayDateEl = document.querySelector(".todayDate");
-todayDateEl.addEventListener('click', showToday)
+todayDateEl.addEventListener("click", showToday);
 
 // cal year and month choosing
 const showAllYears = () => {
-  calYear.textContent = '2002'
-}
+  calYear.textContent = "2002";
+};
 
-calYear.addEventListener('click', showAllYears)
+calYear.addEventListener("click", showAllYears);
 
+// load notes
+
+
+// saving notes
+const autoSave = () => {
+  const today = `${date.getFullYear()}-${months[date.getMonth()]}-${date.getDate()}`;
+  localStorage.setItem(today, JSON.stringify(textArea.value));
+};
+
+textArea.addEventListener("input", autoSave);
