@@ -12,6 +12,8 @@
 - implement saving function for notes
     - choose db: localstorage or indexDb
 
+- implement loading notes of the particular day
+
 - color
     - https://colorhunt.co/palette/fff3dadfccfbd0bfffbeadfa
     - https://colorhunt.co/palette/ff78c4e1aeffffbdf7ffecec

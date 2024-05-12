@@ -36,6 +36,7 @@ const days = [
   "Friday",
   "Saturday",
 ];
+// for notes saving loading
 
 // today dates heading
 dayEl.textContent = days[date.getDate()];
@@ -87,13 +88,14 @@ const showPreviousDay = () => {
   const todayDate = document.querySelector(".isToday");
   todayDate.classList.remove("isToday");
   todayDate.previousElementSibling.classList.add("isToday");
-  // show notes on that day
+  loadNotes();
 };
 
 const showNextDay = () => {
   const todayDate = document.querySelector(".isToday");
   todayDate.classList.remove("isToday");
   todayDate.nextElementSibling.classList.add("isToday");
+  loadNotes();
 };
 prevDay.addEventListener("click", showPreviousDay);
 nextDay.addEventListener("click", showNextDay);
@@ -107,13 +109,30 @@ const showAllYears = () => {
 
 calYear.addEventListener("click", showAllYears);
 
-// load notes
+// notes
 
+// load notes
+const loadNotes = () => {
+  const todayDate = document.querySelector(".isToday");
+  const thisDay = `${calYear.textContent}-${calMonth.textContent}-${todayDate.textContent}`;
+  console.log(thisDay);
+  const notes = localStorage.getItem(thisDay);
+  if (notes) {
+    textArea.value = JSON.parse(notes);
+  } else {
+    textArea.value = "";
+  }
+};
+loadNotes();
 
 // saving notes
 const autoSave = () => {
-  const today = `${date.getFullYear()}-${months[date.getMonth()]}-${date.getDate()}`;
-  localStorage.setItem(today, JSON.stringify(textArea.value));
+  const todayDate = document.querySelector(".isToday");
+  const thisDay = `${calYear.textContent}-${calMonth.textContent}-${todayDate.textContent}`;
+  localStorage.setItem(thisDay, JSON.stringify(textArea.value));
 };
 
 textArea.addEventListener("input", autoSave);
+document.body.addEventListener("click", function (event) {
+  textArea.focus();
+});
