@@ -60,7 +60,7 @@ for (let i = dayOne; i > 0; i--) {
 }
 for (let i = 1; i < lastdate; i++) {
   if (i === currentDate) {
-    generatedDays += `<li class="isToday">${i}</li>`;
+    generatedDays += `<li class="active isToday">${i}</li>`;
   } else {
     generatedDays += `<li>${i}</li>`;
   }
@@ -69,32 +69,46 @@ for (let i = 1; i < 8 - dayEnd; i++) {
   generatedDays += `<li class="inactive">${i}</li>`;
 }
 
+
 calDatesList.innerHTML = generatedDays;
+
+// calendar-dates show notes
+const showNotesOfTheDay = (e) => {
+  const date = e.target
+  if(date.tagName === 'LI') {
+    document.querySelector(".active").classList.remove('active')
+    date.classList.add("active");
+    loadNotes()
+  }
+}
+
+calDatesList.addEventListener('click', showNotesOfTheDay)
+
 
 // calendar buttons
 const showToday = () => {
-  const todayDate = document.querySelector(".isToday");
+  const todayDate = document.querySelector(".active");
   const today = date.getDate();
-  todayDate.classList.remove("isToday");
+  todayDate.classList.remove("active");
   for (const date of calDatesList.childNodes) {
     if (date.textContent == today) {
-      date.classList.add("isToday");
+      date.classList.add("active");
     }
   }
 };
 
 const showPreviousDay = () => {
   // change date in calendar
-  const todayDate = document.querySelector(".isToday");
-  todayDate.classList.remove("isToday");
-  todayDate.previousElementSibling.classList.add("isToday");
+  const todayDate = document.querySelector(".active");
+  todayDate.classList.remove("active");
+  todayDate.previousElementSibling.classList.add("active");
   loadNotes();
 };
 
 const showNextDay = () => {
-  const todayDate = document.querySelector(".isToday");
-  todayDate.classList.remove("isToday");
-  todayDate.nextElementSibling.classList.add("isToday");
+  const todayDate = document.querySelector(".active");
+  todayDate.classList.remove("active");
+  todayDate.nextElementSibling.classList.add("active");
   loadNotes();
 };
 prevDay.addEventListener("click", showPreviousDay);
@@ -113,21 +127,23 @@ calYear.addEventListener("click", showAllYears);
 
 // load notes
 const loadNotes = () => {
-  const todayDate = document.querySelector(".isToday");
-  const thisDay = `${calYear.textContent}-${calMonth.textContent}-${todayDate.textContent}`;
+  const thisDate = document.querySelector(".active");
+  const thisDay = `${calYear.textContent}-${calMonth.textContent}-${thisDate.textContent}`;
   console.log(thisDay);
   const notes = localStorage.getItem(thisDay);
+  console.log(notes);
   if (notes) {
     textArea.value = JSON.parse(notes);
+    console.log(notes);
   } else {
-    textArea.value = "";
+    textArea.value = ""
   }
 };
 loadNotes();
 
 // saving notes
 const autoSave = () => {
-  const todayDate = document.querySelector(".isToday");
+  const todayDate = document.querySelector(".active");
   const thisDay = `${calYear.textContent}-${calMonth.textContent}-${todayDate.textContent}`;
   localStorage.setItem(thisDay, JSON.stringify(textArea.value));
 };
@@ -136,3 +152,5 @@ textArea.addEventListener("input", autoSave);
 document.body.addEventListener("click", function (event) {
   textArea.focus();
 });
+
+

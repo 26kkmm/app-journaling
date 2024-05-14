@@ -4,8 +4,10 @@
   padding: 0;
 }
 
-body {
-  font-family: "Courier New", Courier, monospace;
+html {
+  font-family: "Varela Round", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   font-size: medium;
 }
 
@@ -60,7 +62,6 @@ body {
   background-color: antiquewhite;
 }
 
-
 .calendar {
   width: 100%;
   font-size: 1.1rem;
@@ -93,7 +94,7 @@ body {
 
 .cal-days {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
 }
 
 .weekdays {
@@ -103,7 +104,6 @@ body {
   justify-content: space-around;
   margin-bottom: 1rem;
 }
-
 
 .cal-dates {
   display: grid;
@@ -122,8 +122,17 @@ body {
   color: rgba(179, 179, 179, 0.8);
 }
 
+.inactive:hover {
+  background-color: aqua;
+}
+
 .isToday {
   font-weight: bolder;
+}
+
+.active {
+    background-color: antiquewhite;
+  border-radius: 2%;
 }
 
 .writing-zone {
