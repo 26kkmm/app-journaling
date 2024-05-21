@@ -95,6 +95,7 @@ const showToday = () => {
       date.classList.add("active");
     }
   }
+  loadNotes()
 };
 
 const showPreviousDay = () => {
@@ -116,12 +117,7 @@ nextDay.addEventListener("click", showNextDay);
 const todayDateEl = document.querySelector(".todayDate");
 todayDateEl.addEventListener("click", showToday);
 
-// cal year and month choosing
-const showAllYears = () => {
-  calYear.textContent = "2002";
-};
 
-calYear.addEventListener("click", showAllYears);
 
 // notes
 
@@ -154,3 +150,55 @@ document.body.addEventListener("click", function (event) {
 });
 
 
+document.addEventListener('DOMContentLoaded', () => {
+  populateYearDropdown();
+  populateMonthDropdown();
+});
+
+function toggleYearDropdown() {
+  const yearDropdown = document.getElementById('year-dropdown');
+  yearDropdown.style.display = yearDropdown.style.display === 'none' ? 'block' : 'none';
+}
+
+function toggleMonthDropdown() {
+  const monthDropdown = document.getElementById('month-dropdown');
+  monthDropdown.style.display = monthDropdown.style.display === 'none' ? 'block' : 'none';
+}
+
+function populateYearDropdown() {
+  const yearDropdown = document.getElementById('year-dropdown');
+  const currentYear = new Date().getFullYear();
+  for (let year = 2020; year <= currentYear + 5; year++) {
+    const yearDiv = document.createElement('div');
+    yearDiv.textContent = year;
+    yearDiv.onclick = () => {
+      document.querySelector('.cal-year').textContent = year;
+      yearDropdown.style.display = 'none';
+    };
+    yearDropdown.appendChild(yearDiv);
+  }
+}
+
+function populateMonthDropdown() {
+  const monthDropdown = document.getElementById('month-dropdown');
+  months.forEach((month, index) => {
+    const monthDiv = document.createElement('div');
+    monthDiv.textContent = month;
+    monthDiv.onclick = () => {
+      document.querySelector('.cal-month').textContent = month;
+      monthDropdown.style.display = 'none';
+    };
+    monthDropdown.appendChild(monthDiv);
+  });
+}
+
+document.addEventListener('click', (event) => {
+  const yearDropdown = document.getElementById('year-dropdown');
+  const monthDropdown = document.getElementById('month-dropdown');
+  if (!event.target.closest('.cal-year') && !event.target.closest('#year-dropdown')) {
+    yearDropdown.style.display = 'none';
+  }
+  if (!event.target.closest('.cal-month') && !event.target.closest('#month-dropdown')) {
+    monthDropdown.style.display = 'none';
+  }
+});

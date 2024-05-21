@@ -3,9 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/index.css" />
     <script src="/responsive.js" defer></script>
     <script src="/index.js" defer></script>
@@ -14,16 +17,30 @@
   <body>
     <div class="app">
       <div class="lookup">
-        
         <div class="today">
           <div class="day"></div>
           <div class="date"></div>
         </div>
         <div class="calendar">
           <div class="cal-heading">
-            <div class="cal-year"></div>
-            <div class="cal-month"></div>
+            <div class="cal-year" onclick="toggleYearDropdown()"></div>
+            <div class="year-dropdown-container">
+              <div
+                class="year-dropdown"
+                id="year-dropdown"
+                style="display: none"
+              ></div>
+            </div>
+            <div class="cal-month" onclick="toggleMonthDropdown()"></div>
+            <div class="month-dropdown-container">
+              <div
+                class="month-dropdown"
+                id="month-dropdown"
+                style="display: none"
+              ></div>
+            </div>
           </div>
+
           <div class="cal-days">
             <ul class="weekdays">
               <li>Su</li>
@@ -34,8 +51,7 @@
               <li>Fr</li>
               <li>Sa</li>
             </ul>
-            <ul class="cal-dates">
-            </ul>
+            <ul class="cal-dates"></ul>
           </div>
         </div>
         <btn-group>
@@ -47,6 +63,5 @@
         <textarea name="text" id="text" oninput="resizeTextarea()"></textarea>
       </div>
     </div>
-    
   </body>
 </html>

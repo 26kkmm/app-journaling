@@ -14,4 +14,6 @@
 
 - implement loading notes of the particular day 
 
-
+# Possible additional features
+- full text editor
+- integrate full productivity system

@@ -50,7 +50,7 @@ html {
 
 .btn {
   width: 7rem;
-  padding: 0.3rem;
+  padding: 0.7rem;
   background: none;
   border: none;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -87,8 +87,51 @@ html {
 
 .cal-year:hover,
 .cal-month:hover {
+  position: relative;
   cursor: pointer;
   border-radius: 4%;
+  background-color: antiquewhite;
+}
+
+.year-dropdown-container,
+.month-dropdown-container {
+  position: relative;
+}
+
+.year-dropdown {
+  position: absolute;
+  top: -3rem;
+  left: -7rem;
+  background-color: white;
+  box-shadow: rgb(255, 208, 148) 0px 2px 8px 0px;
+  z-index: 1000;
+  max-height: 15rem;
+  overflow-y: scroll;
+}
+.month-dropdown {
+  position: absolute;
+  top: -3rem;
+  right: 1rem;
+  background-color: white;
+    box-shadow: rgb(255, 208, 148) 0px 2px 8px 0px;
+  z-index: 1000;
+  max-height: 15rem;
+  overflow-y: scroll;
+}
+
+.year-dropdown::-webkit-scrollbar,
+.month-dropdown::-webkit-scrollbar {
+  display: none;
+}
+
+.year-dropdown div,
+.month-dropdown div {
+  padding: 0.3rem 1rem;
+  cursor: pointer;
+}
+
+.year-dropdown div:hover,
+.month-dropdown div:hover {
   background-color: antiquewhite;
 }
 
@@ -131,7 +174,7 @@ html {
 }
 
 .active {
-    background-color: antiquewhite;
+  background-color: antiquewhite;
   border-radius: 2%;
 }
 
@@ -139,7 +182,8 @@ html {
   width: 100%;
   text-align: center;
   padding: 2rem 5rem;
-  border-left: 1px solid black;
+  box-shadow: rgba(250, 235, 215, 0.859) 0px 7px 29px 0px;
+  margin-left: 1rem;
   overflow-y: auto;
 }
 
